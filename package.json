@@ -1,0 +1,15 @@
+{
+  "name": "authorize",
+  "version": "1.0.0",
+  "description": "react authorize component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "edo_yuki",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
