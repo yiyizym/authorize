@@ -6,7 +6,6 @@
 
 
 import React, {ReactElement} from 'react';
-import { Spin } from 'antd';
 
 
 interface BaseProps {
@@ -115,7 +114,7 @@ class BaseAuthorize extends React.Component<BaseProps, BaseState> {
             textAlign: 'center',
           }}
         >
-          <Spin size="large" />
+          <div>loading...</div>
         </div>
       );
     } else {

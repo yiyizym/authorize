@@ -1,89 +1,68 @@
-##AuthorizedPage
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-实现用户有权限时可以查看页面，没有权限时只能看到 `you dont have permissions` 。
+## Available Scripts
 
-**用法示例**
+In the project directory, you can run:
 
-假设用户需要拥有 `system_landing_page_read` 权限才能查看 `SomePage` 页面。只需要：
+### `npm start`
 
-1 引入 `AuthorizePage` 组件
-2 照常编写页面组件
-3 在 export 前，调用 `AuthorizePage('system_landing_page_read')(SomePage)`
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-```jsx
-import AuthorizePage from 'path/to/components/common/Authorized/AuthorizedPage';
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-class SomePage extends Component {
-  public render(): React.ReactNode {
-    return (
-      <div>some page.</div>
-    );
-  }
-}
+### `npm test`
 
-export default AuthorizePage('system_landing_page_read')(YourPage);
-```
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-**补充说明**
+### `npm run build`
 
-因为权限组件需要用到当前路由的信息，已经在内部引入了 `react-router-dom` 的 `withRouter`。所以可以直接在组件的 `props` 中访问相关路由属性。
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-因为我们的权限与 projectId 、 channelId 有关，需要从路由中取出这两个信息。为减少获取 projectId 、 channelId 的复杂度，需要约定书写路由时的格式：给相应的 id 命名。
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-如匹配 `project 详情页面` 的路由需要这样写：
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```
-  path: '/projects/:projectId'
-```
+### `npm run eject`
 
-匹配 `channel 详情页面` 的路由需要这样写：
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-```
-  path: '/channels/:channelId'
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-##AuthorizedBtn
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-实现用户点击按钮，有权限时可以调用正常的 onClick 回调，没有权限时只触发提示： `please apply for permission` 。
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-**用法示例**
+## Learn More
 
-假设用户需要拥有 `system_landing_page_write` 权限才能点击按钮`say hello`。只需要：
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-1 引入 `AuthorizedBtn` 组件
-2 在使用 `AuthorizedBtn` 时传入 `currentAuthority` 属性，其值为 `system_landing_page_write` ，其他属性与 `antd` 中的 `Button` 一致
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-```jsx
-import AuthorizedBtn from 'path/to/components/common/Authorized/AuthorizedBtn';
+### Code Splitting
 
-class SomePage extends Component {
-  private sayHello(): void {
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-  }
-  public render(): React.ReactNode {
-    return (
-      <AuthorizeBtn currentAuthority='system_landing_page_write' onClick={() => this.sayHello()} type="primary">click to say hello</AuthorizeBtn>
-    );
-  }
-}
+### Analyzing the Bundle Size
 
-export default SomePage;
-```
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-**补充说明**
+### Making a Progressive Web App
 
-因为权限组件需要用到当前路由的信息，已经在内部引入了 `react-router-dom` 的 `withRouter`。所以可以直接在组件的 `props` 中访问相关路由属性。
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-因为我们的权限与 projectId 、 channelId 有关，需要从路由中取出这两个信息。为减少获取 projectId 、 channelId 的复杂度，需要约定书写路由时的格式：给相应的 id 命名。
+### Advanced Configuration
 
-如匹配 `project 详情页面` 的路由需要这样写：
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-```
-  path: '/projects/:projectId'
-```
+### Deployment
 
-匹配 `channel 详情页面` 的路由需要这样写：
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-```
-  path: '/channels/:channelId'
-```
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

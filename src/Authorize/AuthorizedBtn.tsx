@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button,message } from 'antd';
 import authorize from './authorize';
-import { USER_PERMISSION_MAP } from '@/config/constants';
+import { USER_PERMISSION_MAP } from '../constants';
 import BaseAuthorize from './base';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-const showError = (): void => {message.error('please apply for permission');};
+const showError = (): void => {window.alert('please apply for permission');};
 
-interface AuthorizeProps extends RouteComponentProps<{projectId: string; channelId: string}> {
+interface AuthorizeProps extends RouteComponentProps<{}> {
   currentAuthority: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propName: string]: any;
@@ -31,14 +30,14 @@ class AuthorizeBtn extends React.Component<AuthorizeProps, InnerState> {
   public render(): JSX.Element {
     const { currentAuthority, staticContext, match, onClick, ...rest } = this.props;
     const { author } = this.state;
-    const noMatch = <Button onClick={showError} />;
+    const noMatch = <button onClick={showError} />;
     return (<BaseAuthorize
       author={author}
       noMatch={noMatch}
-      defaultChildren={<Button />}
+      defaultChildren={<button />}
       childrenProps={rest}
     >
-      <Button onClick={onClick} />
+      <button onClick={onClick} />
     </BaseAuthorize>);
   }
 }
