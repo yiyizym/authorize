@@ -7,6 +7,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 const showError = (): void => {window.alert('please apply for permission');};
 
 interface AuthorizeProps extends RouteComponentProps<{}> {
+  reRenderKey?: number | string; // 当这个值变化就重新渲染组件
   currentAuthority: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propName: string]: any;
@@ -27,8 +28,12 @@ class AuthorizeBtn extends React.Component<AuthorizeProps, InnerState> {
     });
   }
 
+  public shouldComponentUpdate(nextProps: AuthorizeProps, nextState: InnerState): boolean {
+    return nextState.author !== this.state.author || nextProps.reRenderKey !== this.props.reRenderKey;
+  }
+
   public render(): JSX.Element {
-    const { currentAuthority, staticContext, match, onClick, ...rest } = this.props;
+    const { currentAuthority, staticContext, match, reRenderKey, onClick, ...rest } = this.props;
     const { author } = this.state;
     const noMatch = <button onClick={showError} />;
     return (<BaseAuthorize

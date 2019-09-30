@@ -118,7 +118,7 @@ class BaseAuthorize extends React.Component<BaseProps, BaseState> {
         </div>
       );
     } else {
-      const NotNullComponent = Component as React.ComponentClass; //fix typescript error hint
+      const NotNullComponent = Component as unknown as React.ComponentClass; //fix typescript error hint
       return (
         <NotNullComponent {...childrenProps} />
       );
