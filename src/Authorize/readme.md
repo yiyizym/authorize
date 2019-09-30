@@ -1,4 +1,4 @@
-##AuthorizedPage
+## AuthorizedPage
 
 实现用户有权限时可以查看页面，没有权限时只能看到 `you dont have permissions` 。
 
@@ -28,7 +28,7 @@ export default AuthorizePage('page_a_read')(PageA);
 
 因为权限组件需要用到当前路由的信息，已经在内部引入了 `react-router-dom` 的 `withRouter`。所以可以直接在组件的 `props` 中访问相关路由属性。
 
-##AuthorizedBtn
+## AuthorizedBtn
 
 实现用户点击按钮，有权限时可以调用正常的 onClick 回调，没有权限时只触发提示： `please apply for permission` 。
 
